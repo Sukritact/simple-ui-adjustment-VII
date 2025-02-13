@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Mod id="sukritacts_simple_ui_adjustments" version="1"
+	xmlns="ModInfo">
+	<Properties>
+		<Name>Sukritact's Simple UI Adjustments</Name>
+		<Description>Makes simple QoL changes to the UI.</Description>
+		<Authors>Sukritact</Authors>
+		<Package>Mod</Package>
+		<AffectsSavedGames>0</AffectsSavedGames>
+	</Properties>
+	<Dependencies>
+		<Mod id="base-standard" title="LOC_MODULE_BASE_STANDARD_NAME"/>
+	</Dependencies>
+	<ActionCriteria>
+		<Criteria id="always">
+			<AlwaysMet></AlwaysMet>
+		</Criteria>
+	</ActionCriteria>
+	<ActionGroups>
+		<ActionGroup id="game-suk-simple-ui-always" scope="game" criteria="always">
+			<Properties>
+				<LoadOrder>100</LoadOrder>
+			</Properties>
+			<Actions>
+				<UpdateText>
+					<Item>text/Suk_Simple_UI_Adjustments_Text.sql</Item>
+				</UpdateText>
+				<ImportFiles>
+					<Item>ui/unit-flags/unit-flags.js</Item>
+					<Item>ui/unit-flags/unit-flags-independent-powers.js</Item>
+					<Item>ui/lenses/layer/yields-layer.js</Item>
+					<Item>ui/tooltips/plot-tooltip.js</Item>
+					<Item>ui/city-banners/city-banners.js</Item>
+				</ImportFiles>
+			</Actions>
+		</ActionGroup>
+	</ActionGroups>
+</Mod>
