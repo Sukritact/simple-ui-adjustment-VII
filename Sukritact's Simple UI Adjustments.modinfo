@@ -28,7 +28,6 @@
 				<ImportFiles>
 					<Item>ui/unit-flags/unit-flags.js</Item>
 					<Item>ui/unit-flags/unit-flags-independent-powers.js</Item>
-					<Item>ui/lenses/layer/yields-layer.js</Item>
 					<Item>ui/tooltips/plot-tooltip.js</Item>
 					<Item>ui/city-banners/city-banners.js</Item>
 				</ImportFiles>
