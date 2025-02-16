@@ -15,8 +15,24 @@
 		<Criteria id="always">
 			<AlwaysMet></AlwaysMet>
 		</Criteria>
+		<Criteria any="true" id="plot-tooltip-compat">
+			<ModInUse inverse="1">tcs-ui-improved-plot-tooltip</ModInUse>
+		</Criteria>
 	</ActionCriteria>
 	<ActionGroups>
+		<ActionGroup id="game-suk-simple-ui-plot-tooltip" scope="game" criteria="plot-tooltip-compat">
+			<Properties>
+				<LoadOrder>100</LoadOrder>
+			</Properties>
+			<Actions>
+				<UpdateText>
+					<Item>text/Suk_Simple_UI_Adjustments_Text.sql</Item>
+				</UpdateText>
+				<ImportFiles>
+					<Item>ui/tooltips/plot-tooltip.js</Item>
+				</ImportFiles>
+			</Actions>
+		</ActionGroup>
 		<ActionGroup id="game-suk-simple-ui-always" scope="game" criteria="always">
 			<Properties>
 				<LoadOrder>100</LoadOrder>
@@ -28,7 +44,6 @@
 				<ImportFiles>
 					<Item>ui/unit-flags/unit-flags.js</Item>
 					<Item>ui/unit-flags/unit-flags-independent-powers.js</Item>
-					<Item>ui/tooltips/plot-tooltip.js</Item>
 					<Item>ui/city-banners/city-banners.js</Item>
 				</ImportFiles>
 			</Actions>
