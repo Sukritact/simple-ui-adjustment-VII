@@ -41,9 +41,10 @@
 				<UpdateText>
 					<Item>text/Suk_Simple_UI_Adjustments_Text.sql</Item>
 				</UpdateText>
+				<UIScripts>
+					<Item>ui/unit-flags/suk-unit-flags.js</Item>
+				</UIScripts>
 				<ImportFiles>
-					<Item>ui/unit-flags/unit-flags.js</Item>
-					<Item>ui/unit-flags/unit-flags-independent-powers.js</Item>
 					<Item>ui/city-banners/city-banners.js</Item>
 				</ImportFiles>
 			</Actions>
