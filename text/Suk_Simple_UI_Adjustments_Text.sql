@@ -3,6 +3,7 @@
 		INSERT OR REPLACE INTO LocalizedText
 			(Tag,	Language,	Text)
 		VALUES
+			('LOC_SUK_SUA_YOUR_UNIT',		'en_US',	"Yours"),
 			('LOC_SUK_SUA_DISTRICT',		'en_US',	"{1_Type} District"),
 			('LOC_SUK_SUA_QUARTER',			'en_US',	"{1_Type} Quarter"),
 			('LOC_SUK_SUA_PLOT_OWNERSHIP',	'en_US',	"{1} {LOC_PLOT_DIVIDER_DOT} {2} ({3})"),

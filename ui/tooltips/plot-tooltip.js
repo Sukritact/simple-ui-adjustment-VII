@@ -63,6 +63,7 @@ class PlotTooltipType {
 		const biomeLabel = this.getBiomeLabel(plotCoord);
 		const featureLabel = this.getFeatureLabel(plotCoord);
 		const continentName = this.getContinentName(plotCoord);
+		const isDistant = Players.get(GameContext.localPlayerID).isDistantLands(plotCoord)
 		const riverLabel = this.getRiverLabel(plotCoord);
 		const routeName = this.getRouteName();
 		const hexResource = this.getResource();
@@ -129,25 +130,22 @@ class PlotTooltipType {
 		this.container.appendChild(tooltipFirstLine);
 		if (featureLabel) {
 			const tooltipSecondLine = document.createElement("div");
-			tooltipSecondLine.classList.add("plot-tooltip__lineTwo");
+			tooltipSecondLine.classList.add("plot-tooltip__owner-civ-text");
 			tooltipSecondLine.setAttribute('data-l10n-id', featureLabel);
 			this.container.appendChild(tooltipSecondLine);
 		}
+		if (riverLabel) {
+			const tooltipThirdLine = document.createElement("div");
+			tooltipThirdLine.classList.add("plot-tooltip__owner-civ-text");
+			tooltipThirdLine.setAttribute('data-l10n-id', riverLabel);
+			this.container.appendChild(tooltipThirdLine);
+		}
 		if (continentName) {
-			if (riverLabel) {
-				const tooltipThirdLine = document.createElement("div");
-				tooltipThirdLine.classList.add("plot-tooltip__lineThree");
-				// TODO - This hard-coded string should be in loc XML.
-				const label = Locale.compose('{1_ContinentName} {LOC_PLOT_DIVIDER_DOT} {2_RiverName}', continentName, riverLabel);
-				tooltipThirdLine.setAttribute('data-l10n-id', label);
-				this.container.appendChild(tooltipThirdLine);
-			}
-			else {
-				const tooltipThirdLine = document.createElement("div");
-				tooltipThirdLine.classList.add("plot-tooltip__lineThree");
-				tooltipThirdLine.setAttribute('data-l10n-id', continentName);
-				this.container.appendChild(tooltipThirdLine);
-			}
+			const tooltipThirdLine = document.createElement("div");
+			tooltipThirdLine.classList.add("plot-tooltip__owner-civ-text");
+			tooltipThirdLine.setAttribute('data-l10n-id', 
+				isDistant?Locale.compose("{1} ({LOC_RESOURCE_GENERAL_TYPE_DISTANT_LANDS})", continentName):continentName);
+			this.container.appendChild(tooltipThirdLine);
 		}
 		// District Information
 		this.addPlotDistrictInformation(this.plotCoord);
@@ -218,6 +216,9 @@ class PlotTooltipType {
 			}
 		}
 
+		// Unit Info
+		this.addUnitInfo(this.plotCoord);
+
 		if (playerID > -1 || routeName){
 			this.addHorizontalSpace(0.2);
 			this.addHorizontalLine();
@@ -237,8 +238,6 @@ class PlotTooltipType {
 			toolTipRouteInfo.innerHTML = routeName;
 			this.container.appendChild(toolTipRouteInfo);
 		}
-		// Unit Info
-		this.addUnitInfo(this.plotCoord);
 		UI.setPlotLocation(this.plotCoord.x, this.plotCoord.y, plotIndex);
 		// Adjust cursor between normal and red based on the plot owner's hostility
 		if (!UI.isCursorLocked()) {
@@ -566,7 +565,7 @@ class PlotTooltipType {
 				const iBuildingAge	= GameInfo.Ages[info?.Age ?? Game.age].$index;
 				const obsolete		= !((iBuildingAge >= iCurrentAge) || ageless)
 
-				if (!obsolete && consumesSlot){
+				if (complete && !obsolete && consumesSlot){
 					numBuildings += fullTile?2:1;
 					if (!BT1){BT1 = info.ConstructibleType}
 					else {BT2 = info.ConstructibleType}
@@ -660,16 +659,16 @@ class PlotTooltipType {
 			}
 		}
 
-		if (uniqueQuarter){
-			this.addHorizontalSpace(0.2);
-			const uniqueQuarterDesc = document.createElement("div");
-			uniqueQuarterDesc.innerHTML = Locale.stylize(uniqueQuarter.Description).replace(/&nbsp;/g, ' '); // DEATH TO NBSPs
-			uniqueQuarterDesc.style.setProperty("line-height", "1.1rem")
-			uniqueQuarterDesc.style.setProperty("max-width", "14rem");
-			uniqueQuarterDesc.classList.add("plot-tooltip__owner-civ-text");
+		// if (uniqueQuarter){
+		// 	this.addHorizontalSpace(0.2);
+		// 	const uniqueQuarterDesc = document.createElement("div");
+		// 	uniqueQuarterDesc.innerHTML = Locale.stylize(uniqueQuarter.Description).replace(/&nbsp;/g, ' '); // DEATH TO NBSPs
+		// 	uniqueQuarterDesc.style.setProperty("line-height", "1.1rem")
+		// 	uniqueQuarterDesc.style.setProperty("max-width", "14rem");
+		// 	uniqueQuarterDesc.classList.add("plot-tooltip__owner-civ-text");
 
-			this.container.appendChild(uniqueQuarterDesc)
-		}
+		// 	this.container.appendChild(uniqueQuarterDesc)
+		// }
 	}
 	getPlayerName() {
 		const playerID = GameplayMap.getOwner(this.plotCoord.x, this.plotCoord.y);
@@ -927,63 +926,38 @@ class PlotTooltipType {
 		return label;
 	}
 	addUnitInfo(location) {
+		// Check if player has visiblity of the plot
 		const localPlayerID = GameContext.localObserverID;
 		if (GameplayMap.getRevealedState(localPlayerID, location.x, location.y) != RevealedStates.VISIBLE) {
-			return this;
+			return;
 		}
-		let topUnit = this.getTopUnit(location);
-		if (topUnit) {
-			if (!Visibility.isVisible(localPlayerID, topUnit?.id)) {
-				return this;
-			}
-		}
-		else {
-			return this;
-		}
-		const player = Players.get(topUnit.owner);
-		if (!player) {
-			return this;
-		}
-		if (player.id == localPlayerID) {
-			return this;
-		}
-		let unitName = Locale.compose(topUnit.name);
-		const toolTipHorizontalRule = document.createElement("div");
-		toolTipHorizontalRule.classList.add("plot-tooltip__horizontalRule");
-		this.container.appendChild(toolTipHorizontalRule);
-		const toolTipUnitInfo = document.createElement("div");
-		toolTipUnitInfo.classList.add("plot-tooltip__unitInfo");
-		toolTipUnitInfo.innerHTML = unitName;
-		this.container.appendChild(toolTipUnitInfo);
-		const plotOwner = GameplayMap.getOwner(this.plotCoord.x, this.plotCoord.y);
-		if (plotOwner != topUnit.owner) {
-			const toolTipUnitCiv = document.createElement("div");
-			toolTipUnitCiv.classList.add("plot-tooltip__Civ-Info");
-			if (player.isIndependent) {
-				const independentID = Game.IndependentPowers.getIndependentPlayerIDFromUnit(topUnit.id);
-				if (independentID != PlayerIds.NO_PLAYER) {
-					const indy = Players.get(independentID);
-					if (indy) {
-						toolTipUnitCiv.innerHTML = Locale.compose("LOC_CIVILIZATION_INDEPENDENT_SINGULAR", Locale.compose(indy.civilizationFullName));
-						this.container.appendChild(toolTipUnitCiv);
-						const relationship = Game.IndependentPowers.getIndependentHostility(independentID, localPlayerID);
-						const toolTipUnitRelationship = document.createElement("div");
-						toolTipUnitRelationship.classList.add("plot-tooltip__Unit-Relationship-Info");
-						toolTipUnitRelationship.innerHTML = Locale.compose("LOC_INDEPENDENT_RELATIONSHIP") + ": " + Locale.compose(relationship);
-						this.container.appendChild(toolTipUnitRelationship);
-					}
+		// Then check if there are units on the plot
+		const plotUnits = MapUnits.getUnits(location.x, location.y);
+		if (plotUnits.length < 1){return}
+		// If we get this far, there are visible units to list.
+		this.addTitle(Locale.compose("LOC_UI_PRODUCTION_UNITS"))
+
+		for (let i = 0; i < plotUnits.length && i < 4; i++) {
+			let plotUnit = Units.get(plotUnits[i]);
+			let unitName = Locale.compose(plotUnit.name);
+			let player = Players.get(plotUnit.owner);
+			let playerName = Locale.compose((player.id==localPlayerID)?"LOC_SUK_SUA_YOUR_UNIT":player.name)
+			let hostile = false;
+			const unitDiv = document.createElement("div");
+			if (player.id != localPlayerID && i == 0) {
+				const playerDiplomacy = player?.Diplomacy;
+				if (playerDiplomacy.isAtWarWith(localPlayerID)) {
+					hostile = true
 				}
 			}
-			else {
-				const toolTipUnitOwner = document.createElement('div');
-				toolTipUnitOwner.classList.add('plot-tooltip__owner-leader-text');
-				toolTipUnitOwner.innerHTML = Locale.stylize(player.name);
-				this.container.appendChild(toolTipUnitOwner);
-				toolTipUnitCiv.innerHTML = Locale.compose(player.civilizationFullName);
-				this.container.appendChild(toolTipUnitCiv);
+			unitDiv.classList.add('text-center',"plot-tooltip__unitInfo");
+			unitDiv.innerHTML = Locale.compose("{1} ({2})", unitName, playerName);
+			if (hostile){
+				unitDiv.innerHTML = Locale.stylize("[icon:NOTIFICATION_DECLARE_WAR]  "+ unitDiv.innerHTML)
 			}
+			this.container.appendChild(unitDiv);
 		}
-		return this;
+		this.addHorizontalSpace()
 	}
 	/**
 	 * Add to a plot tooltip any yields that are greater than 0 for that plot
@@ -1026,10 +1000,12 @@ class PlotTooltipType {
 			this.yieldsFlexbox.classList.add(maxValueLength > 3 ? 'resourcesFlex--triple-digits' : 'resourcesFlex--double-digits');
 		}
 
-		const totalYieldsbox = document.createElement("div");
-		totalYieldsbox.classList.add("plot-tooltip__owner-civ-text");
-		totalYieldsbox.innerHTML = Locale.compose("LOC_ATTR_TOTAL_YIELD") + ': ' + totalYields;
-		this.container.appendChild(totalYieldsbox);
+		if (totalYields > 0) {
+			const totalYieldsbox = document.createElement("div");
+			totalYieldsbox.classList.add("plot-tooltip__owner-civ-text");
+			totalYieldsbox.innerHTML = Locale.compose("LOC_ATTR_TOTAL_YIELD") + ': ' + totalYields;
+			this.container.appendChild(totalYieldsbox);
+		}
 	}
 	/**
 	 * Add to a plot tooltip district info and show it if the health is not 100 nor 0
