@@ -23,6 +23,16 @@ class PlotTooltipType {
 				Controls.preloadImage(url, 'plot-tooltip');
 			}
 		});
+
+		this.UniqueQuarterCache = {};
+		GameInfo.UniqueQuarters.forEach(row => {
+			const BT1	= row.BuildingType1;
+			const BT2	= row.BuildingType2;
+			const A		= BT1>BT2?BT1:BT2;
+			const B		= BT1>BT2?BT2:BT1;
+			const Quarter = row.UniqueQuarterType
+			this.UniqueQuarterCache[A+B] = row;
+		})
 	}
 	getHTML() {
 		return this.tooltip;
@@ -533,6 +543,9 @@ class PlotTooltipType {
 			PreviousAge: new Array(),
 			Other: new Array()
 		};
+		let numBuildings = 0
+		let BT1;
+		let BT2;
 
 		constructibles.forEach((item) => {
 			const instance = Constructibles.getByComponentID(item);
@@ -546,18 +559,27 @@ class PlotTooltipType {
 			const complete = instance.complete
 
 			if (info.ConstructibleClass == "BUILDING") {
-				const ageless = GameInfo.TypeTags.find(e => e.Tag == "AGELESS" && e.Type == info.ConstructibleType);
-				const iCurrentAge = Game.age;
-				const iBuildingAge = Database.makeHash(info?.Age ?? "");
+				const ageless		= GameInfo.TypeTags.find(e => e.Tag == "AGELESS" && e.Type == info.ConstructibleType);
+				const consumesSlot	= info.ExistingDistrictOnly != 1
+				const fullTile		= GameInfo.TypeTags.find(e => e.Tag == "FULL_TILE" && e.Type == info.ConstructibleType);
+				const iCurrentAge	= GameInfo.Ages[Game.age].$index;
+				const iBuildingAge	= GameInfo.Ages[info?.Age ?? Game.age].$index;
+				const obsolete		= !((iBuildingAge >= iCurrentAge) || ageless)
 
-				if (iCurrentAge != iBuildingAge) {
+				if (!obsolete && consumesSlot){
+					numBuildings += fullTile?2:1;
+					if (!BT1){BT1 = info.ConstructibleType}
+					else {BT2 = info.ConstructibleType}
+				}
+
+				if (iBuildingAge < iCurrentAge) {
 					buildingStatus.PreviousAge.push({
 						info: info,
 						status: {
 							damaged:	damaged,
 							complete:	complete,
 							ageless:	ageless,
-							obsolete:	true
+							obsolete:	obsolete
 						}
 					})
 				} else {
@@ -567,7 +589,7 @@ class PlotTooltipType {
 							damaged:	damaged,
 							complete:	complete,
 							ageless:	ageless,
-							obsolete:	false
+							obsolete:	obsolete
 						}
 					})
 				}
@@ -583,6 +605,10 @@ class PlotTooltipType {
 				})
 			}
 		});
+		//--------------------
+		// Add header for the district
+		//--------------------
+		let uniqueQuarter;
 		if (district) {
 
 			const districtDefinition = GameInfo.Districts.lookup(district.type);
@@ -592,13 +618,29 @@ class PlotTooltipType {
 				return;
 			}
 
-			let districtTypeName = Locale.compose(districtDefinition.Name);
-			if (districtType == "DISTRICT_URBAN" || districtType == "DISTRICT_RURAL"){
-				districtTypeName = Locale.compose("LOC_SUK_SUA_DISTRICT", districtDefinition.Name);
+			if (numBuildings>=2 && BT1 && BT2){
+				const BT_A		= BT1>BT2?BT1:BT2;
+				const BT_B		= BT1>BT2?BT2:BT1;
+				uniqueQuarter = this.UniqueQuarterCache[BT_A+BT_B]
 			}
 
-			this.addTitle(districtTypeName)
+			if (uniqueQuarter){
+				this.addTitle(Locale.compose(uniqueQuarter.Name))
+			} else {
+				let districtTypeName = Locale.compose(districtDefinition.Name);
+				if (districtType == "DISTRICT_URBAN" || districtType == "DISTRICT_RURAL"){
+					districtTypeName = Locale.compose(
+						(numBuildings>=2)?"LOC_SUK_SUA_QUARTER":"LOC_SUK_SUA_DISTRICT",
+						districtDefinition.Name
+					);
+				}
+
+				this.addTitle(districtTypeName)
+			}
 		}
+		//--------------------
+		// Add constructibles
+		//--------------------
 		if (buildingStatus.Other.length > 0) {
 			for (let i = 0; i < buildingStatus.Other.length; i++) {
 				const entry = buildingStatus.Other[i];
@@ -616,6 +658,17 @@ class PlotTooltipType {
 				const entry = buildingStatus.PreviousAge[i];
 				this.addConstructible(entry.info, entry.status)
 			}
+		}
+
+		if (uniqueQuarter){
+			this.addHorizontalSpace(0.2);
+			const uniqueQuarterDesc = document.createElement("div");
+			uniqueQuarterDesc.innerHTML = Locale.stylize(uniqueQuarter.Description).replace(/&nbsp;/g, ' '); // DEATH TO NBSPs
+			uniqueQuarterDesc.style.setProperty("line-height", "1.1rem")
+			uniqueQuarterDesc.style.setProperty("max-width", "14rem");
+			uniqueQuarterDesc.classList.add("plot-tooltip__owner-civ-text");
+
+			this.container.appendChild(uniqueQuarterDesc)
 		}
 	}
 	getPlayerName() {
