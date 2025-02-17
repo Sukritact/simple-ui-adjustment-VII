@@ -13,7 +13,7 @@ function suk_checkUnitPosition(unit) {
 		for (let u = 0; u < numUnits; u++) {
 			const unitFlag = UnitFlagManager.instance.getFlag(units[u]);
 			if (!unitFlag) {
-				console.error("unit-flags: checkUnitPosition(): Unit flag's for unit " + ComponentID.toLogString(units[u]) + " is not found");
+				//console.error("unit-flags: checkUnitPosition(): Unit flag's for unit " + ComponentID.toLogString(units[u]) + " is not found");
 				return;
 			}
 			unitFlag.updateTop(offset, !!plotCity);
