@@ -44,9 +44,9 @@
 				<UIScripts>
 					<Item>ui/unit-flags/suk-unit-flags.js</Item>
 					<Item>ui/sub-system-dock/suk-celebration-turncounter.js</Item>
+					<Item>ui/city-banners/suk-city-banners-decorator.js</Item>
 				</UIScripts>
 				<ImportFiles>
-					<Item>ui/city-banners/city-banners.js</Item>
 					<Item>ui/sub-system-dock/panel-sub-system-dock.js</Item>
 					<Item>textures/Suk_TurnCounter_Backing.png</Item>
 				</ImportFiles>
