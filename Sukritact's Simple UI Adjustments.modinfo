@@ -22,7 +22,7 @@
 	<ActionGroups>
 		<ActionGroup id="game-suk-simple-ui-plot-tooltip" scope="game" criteria="plot-tooltip-compat">
 			<Properties>
-				<LoadOrder>100</LoadOrder>
+				<LoadOrder>10</LoadOrder>
 			</Properties>
 			<Actions>
 				<UpdateText>
@@ -35,7 +35,7 @@
 		</ActionGroup>
 		<ActionGroup id="game-suk-simple-ui-always" scope="game" criteria="always">
 			<Properties>
-				<LoadOrder>100</LoadOrder>
+				<LoadOrder>10</LoadOrder>
 			</Properties>
 			<Actions>
 				<UpdateText>
@@ -47,7 +47,6 @@
 					<Item>ui/city-banners/suk-city-banners-decorator.js</Item>
 				</UIScripts>
 				<ImportFiles>
-					<Item>ui/sub-system-dock/panel-sub-system-dock.js</Item>
 					<Item>textures/Suk_TurnCounter_Backing.png</Item>
 				</ImportFiles>
 			</Actions>
