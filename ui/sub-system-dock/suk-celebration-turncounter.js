@@ -53,7 +53,12 @@ function updateButtonTimers(...args) {
 		const turnsToNextGoldenAge = Math.ceil((nextGoldenAgeThreshold - happinessTotal) / happinessPerTurn);
 
 		turnCounterContent.style.setProperty("color", "")
-		turnCounterContent.innerHTML = turnsToNextGoldenAge;
+		if (isFinite(turnsToNextGoldenAge)){
+			turnCounterContent.innerHTML = turnsToNextGoldenAge;
+		} else {
+			turnCounterContent.innerHTML = "";
+		}
+
 	}
 }
 //------------------------------------------
