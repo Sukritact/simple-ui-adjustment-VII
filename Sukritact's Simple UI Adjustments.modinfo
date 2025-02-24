@@ -47,6 +47,7 @@
 					<Item>ui/city-banners/suk-city-banners-decorator.js</Item>
 				</UIScripts>
 				<ImportFiles>
+					<Item>ui/utilities/utilities-core-textprovider.js</Item>
 					<Item>textures/Suk_TurnCounter_Backing.png</Item>
 				</ImportFiles>
 			</Actions>
