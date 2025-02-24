@@ -11,6 +11,16 @@
 			('LOC_SUK_SUA_OBSOLETE',		'en_US',	"Obsolete"),
 			('LOC_SUK_SUA_UNIMPROVED',		'en_US',	"Unimproved"),
 			('LOC_SUK_SUA_GROWTH_TT',		'en_US',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
+			('LOC_SUK_SUA_ADJ_QUARTER',		'en_US',	"Quarter"),
+
+			('LOC_SUK_SUA_PLACE_BLD_KEY',			'en_US',	"Key"),
+			('LOC_SUK_SUA_PLACE_BLD_ADJACENCIES',	'en_US',	"This Building’s adjacency bonuses."),
+			('LOC_SUK_SUA_PLACE_BLD_WORKERS',		'en_US',	"Specialists multiplying this building’s adjacency bonuses."),
+			('LOC_SUK_SUA_PLACE_BLD_TO_OTHERS',		'en_US',	"Adjacency bonuses to other Tiles."),
+			('LOC_SUK_SUA_PLACE_BLD_BASE_YIELD',	'en_US',	"This Building’s Base Yield."),
+			('LOC_SUK_SUA_PLACE_BLD_WAREHOUSE',		'en_US',	"Warehouse bonuses to other Tiles."),
+			('LOC_SUK_SUA_PLACE_BLD_OVERBUILD',		'en_US',	"Yield losses from Overbuilding/developing a Rural Tile."),
+			('LOC_SUK_SUA_PLACE_BLD_UNWORKED',		'en_US',	"Opportunity cost from developing an unworked tile."),
 			-- Spanish --
 			('LOC_SUK_SUA_YOUR_UNIT',		'es_ES',	"Tuyo"),
 			('LOC_SUK_SUA_DISTRICT',		'es_ES',	"Distrito {1_Type}"),

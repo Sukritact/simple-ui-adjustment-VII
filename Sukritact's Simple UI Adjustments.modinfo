@@ -33,6 +33,27 @@
 				</ImportFiles>
 			</Actions>
 		</ActionGroup>
+		<ActionGroup id="game-suk-simple-ui-building-placement" scope="game" criteria="always">
+			<Properties>
+				<LoadOrder>1</LoadOrder>
+			</Properties>
+			<Actions>
+				<ImportFiles>
+					<Item>ui/place-building/model-place-building.js</Item>
+					<Item>ui/place-building/panel-place-building.js</Item>
+					<Item>ui/lenses/layer/building-placement-layer.js</Item>
+				</ImportFiles>
+				<ImportFiles>
+					<Item>textures/Suk_SUA_WarehouseBonus</Item>
+					<Item>textures/Suk_SUA_ToOthers.png</Item>
+					<Item>textures/Suk_SUA_SpecialistBonus</Item>
+					<Item>textures/Suk_SUA_BaseYield</Item>
+					<Item>textures/Suk_SUA_AdjacencyBonus.png</Item>
+					<Item>textures/Suk_SUA_PotentialLoss.png</Item>
+					<Item>textures/Suk_SUA_DevelopmentLoss.png</Item>
+				</ImportFiles>
+			</Actions>
+		</ActionGroup>
 		<ActionGroup id="game-suk-simple-ui-always" scope="game" criteria="always">
 			<Properties>
 				<LoadOrder>10</LoadOrder>
