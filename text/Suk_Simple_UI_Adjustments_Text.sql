@@ -20,6 +20,7 @@
 			('LOC_SUK_SUA_OBSOLETE',		'es_ES',	"Obsoleto"),
 			('LOC_SUK_SUA_UNIMPROVED',		'es_ES',	"Sin mejoras"),
 			('LOC_SUK_SUA_GROWTH_TT',		'es_ES',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
+			('LOC_SUK_SUA_ADJ_QUARTER',		'es_ES',	"Barrio"),
 			-- Chinese (Simplified) --
 			('LOC_SUK_SUA_YOUR_UNIT',		'zh_Hans_CN',	"你的"),
 			('LOC_SUK_SUA_DISTRICT',		'zh_Hans_CN',	"{1_Type}区块"),
@@ -29,6 +30,17 @@
 			('LOC_SUK_SUA_OBSOLETE',		'zh_Hans_CN',	"过时"),
 			('LOC_SUK_SUA_UNIMPROVED',		'zh_Hans_CN',	"无改良设施"),
 			('LOC_SUK_SUA_GROWTH_TT',		'zh_Hans_CN',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
+			('LOC_SUK_SUA_ADJ_QUARTER',		'zh_Hans_CN',	"城区"),
+			-- Japanese --
+			('LOC_SUK_SUA_YOUR_UNIT',		'ja_JP',	"あなた"),
+			('LOC_SUK_SUA_DISTRICT',		'ja_JP',	"{1_Type} 区域"),
+			('LOC_SUK_SUA_QUARTER',			'ja_JP',	"{1_Type} 街区"),
+			('LOC_SUK_SUA_PLOT_OWNERSHIP',	'ja_JP',	"{1} {LOC_PLOT_DIVIDER_DOT} {2} ({3})"),
+			('LOC_SUK_SUA_IMPROVED_BY',		'ja_JP',	"{1} により改善"),
+			('LOC_SUK_SUA_OBSOLETE',		'ja_JP',	"時代遅れ"),
+			('LOC_SUK_SUA_UNIMPROVED',		'ja_JP',	"未改善"),
+			('LOC_SUK_SUA_GROWTH_TT',		'ja_JP',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
+			('LOC_SUK_SUA_ADJ_QUARTER',		'ja_JP',	"街区"),
 			-- Italian --
 			('LOC_SUK_SUA_YOUR_UNIT',		'it_IT',	"Tuoi"),
 			('LOC_SUK_SUA_DISTRICT',		'it_IT',	"Distretto {1_Type}"),
@@ -38,6 +50,17 @@
 			('LOC_SUK_SUA_OBSOLETE',		'it_IT',	"Obsoleto"),
 			('LOC_SUK_SUA_UNIMPROVED',		'it_IT',	"Non migliorato"),
 			('LOC_SUK_SUA_GROWTH_TT',		'it_IT',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
+			('LOC_SUK_SUA_ADJ_QUARTER',		'it_IT',	"Quartiere"),
+			-- Polish --
+			('LOC_SUK_SUA_YOUR_UNIT',		'pl_PL',	"Twoja"),
+			('LOC_SUK_SUA_DISTRICT',		'pl_PL',	"{1_Type} Dystrykt"),
+			('LOC_SUK_SUA_QUARTER',			'pl_PL',	"{1_Type} Dzielnica"),
+			('LOC_SUK_SUA_PLOT_OWNERSHIP',	'pl_PL',	"{1} {LOC_PLOT_DIVIDER_DOT} {2} ({3})"),
+			('LOC_SUK_SUA_IMPROVED_BY',		'pl_PL',	"Dostępne ulepszenie: {1}"),
+			('LOC_SUK_SUA_OBSOLETE',		'pl_PL',	"Przestarzałe"),
+			('LOC_SUK_SUA_UNIMPROVED',		'pl_PL',	"Puste pole"),
+			('LOC_SUK_SUA_GROWTH_TT',		'pl_PL',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
+			('LOC_SUK_SUA_ADJ_QUARTER',		'pl_PL',	"Dzielnica"),
 			-- Russian --
 			('LOC_SUK_SUA_YOUR_UNIT',		'ru_RU',	"ваш"),
 			('LOC_SUK_SUA_DISTRICT',		'ru_RU',	"{1_Type} Район"),
@@ -46,6 +69,7 @@
 			('LOC_SUK_SUA_IMPROVED_BY',		'ru_RU',	"Улучшает: {1}"),
 			('LOC_SUK_SUA_OBSOLETE',		'ru_RU',	"Устарело"),
 			('LOC_SUK_SUA_UNIMPROVED',		'ru_RU',	"Не улучшено"),
-			('LOC_SUK_SUA_GROWTH_TT',		'ru_RU',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])");
+			('LOC_SUK_SUA_GROWTH_TT',		'ru_RU',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
+			('LOC_SUK_SUA_ADJ_QUARTER',		'ru_RU',	"Квартал");
 --========================================================================================================================
 --========================================================================================================================
