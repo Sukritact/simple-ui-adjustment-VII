@@ -138,7 +138,8 @@ class PlaceBuildingModel {
 			this.selectedConstructibleInfo.type = constructibleDef.ConstructibleType;
 			this.selectedConstructibleInfo.details = [composeConstructibleDescription(constructibleDef.ConstructibleType, city)];
 
-			const ExistingDistrictOnly = constructibleDef.ExistingDistrictOnly
+			const existingDistrictOnly	= constructibleDef.ExistingDistrictOnly
+			const consumesFullTile		= GameInfo.TypeTags.find(e => e.Tag == "FULL_TILE" && e.Type == constructibleDef.ConstructibleType);
 			//=======================================================
 			// On hovering over a plot
 			//=======================================================
@@ -157,7 +158,7 @@ class PlaceBuildingModel {
 					this.showYield[yieldDefinition.YieldType] = false
 				})
 
-				if (!ExistingDistrictOnly){
+				if (!existingDistrictOnly){
 					const placementPlotData = BuildingPlacementManager.getPlacementPlotData(this.selectedPlotIndex);
 					placementPlotData?.changeDetails.forEach((changeDetails) => {
 						const yieldDefinition = GameInfo.Yields.lookup(changeDetails.yieldType);
@@ -241,7 +242,7 @@ class PlaceBuildingModel {
 
 					if (constructibles[index1]) {
 						this.firstConstructibleSlot = this.getConstructibleInfoByComponentID(constructibles[index1]);
-						if (ExistingDistrictOnly){
+						if (existingDistrictOnly){
 							this.placementHeaderText = Locale.compose("LOC_UI_CITY_VIEW_PLACE_HERE");
 						} else if (this.isRepairing && this.firstConstructibleSlot.type == this.selectedConstructibleInfo.type) {
 							this.placementHeaderText = Locale.compose("LOC_UI_CITY_VIEW_REPAIR", this.firstConstructibleSlot.name);
@@ -263,7 +264,21 @@ class PlaceBuildingModel {
 					}
 					if (constructibles[index2]) {
 						this.secondConstructibleSlot = this.getConstructibleInfoByComponentID(constructibles[index2]);
-						if (ExistingDistrictOnly){
+
+						if (consumesFullTile){
+						// Special case where the district has two buildings, and the new buildings consumes the full tile.
+							this.baseYieldPenaltyType = 2
+							this.yieldBreakdown.baseYieldPenalty = this.getYieldsForConstructible(city, constructibles[index1].id);
+							const additionalPenalty = this.getYieldsForConstructible(city, constructibles[index2].id);
+							for (const [key, value] of Object.entries(additionalPenalty)) {
+								this.yieldBreakdown.baseYieldPenalty[key] += value
+							}
+							this.firstConstructibleSlot.showPlacementIcon = true;
+							this.secondConstructibleSlot.showPlacementIcon = true;
+							this.shouldShowOverbuild = true;
+							this.overbuildText = Locale.compose("LOC_UI_CITY_VIEW_PLACE_OVER_DESC", "LOC_SUK_SUA_ADJ_QUARTER");
+							this.placementHeaderText = Locale.compose("LOC_UI_CITY_VIEW_PLACE_OVER", "LOC_SUK_SUA_ADJ_QUARTER");
+						} else if (existingDistrictOnly){
 							this.placementHeaderText = Locale.compose("LOC_UI_CITY_VIEW_PLACE_HERE");
 						} else if (this.isRepairing && this.secondConstructibleSlot.type == this.selectedConstructibleInfo.type) {
 							this.placementHeaderText = Locale.compose("LOC_UI_CITY_VIEW_REPAIR", this.secondConstructibleSlot.name);
