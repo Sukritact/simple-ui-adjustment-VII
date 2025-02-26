@@ -609,7 +609,6 @@ class PlotTooltipType {
 		//--------------------
 		let uniqueQuarter;
 		if (district) {
-
 			const districtDefinition = GameInfo.Districts.lookup(district.type);
 			const districtType = districtDefinition.DistrictType
 			if (!districtDefinition) {
@@ -635,6 +634,24 @@ class PlotTooltipType {
 				}
 
 				this.addTitle(districtTypeName)
+			}
+			//--------------------
+			// Add specialist info
+			//--------------------
+			const city = Cities.get(district.cityId);
+			let numWorkers;
+			let numWorkerSlots;
+			if (city && !city.isTown) {
+				if (district && (district.type == DistrictTypes.URBAN || district.type == DistrictTypes.CITY_CENTER)) {
+					numWorkers = city.Workers.getNumWorkersAtPlot(plotIndex);
+					numWorkerSlots = city.Workers.getCityWorkerCap();
+				}
+			}
+			if (typeof numWorkers === 'number' && typeof numWorkerSlots === 'number') {
+				const specialistsDiv = document.createElement("div");
+				specialistsDiv.classList.add("plot-tooltip__owner-civ-text");
+				specialistsDiv.innerHTML = Locale.compose("LOC_WORKERS_TITLE") + Locale.compose(': {1}/{2}', numWorkers, numWorkerSlots);
+				this.container.appendChild(specialistsDiv);
 			}
 		}
 		//--------------------
