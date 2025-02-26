@@ -12,7 +12,6 @@
 			('LOC_SUK_SUA_UNIMPROVED',		'en_US',	"Unimproved"),
 			('LOC_SUK_SUA_GROWTH_TT',		'en_US',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
 			('LOC_SUK_SUA_ADJ_QUARTER',		'en_US',	"Quarter"),
-
 			('LOC_SUK_SUA_PLACE_BLD_KEY',			'en_US',	"Key"),
 			('LOC_SUK_SUA_PLACE_BLD_ADJACENCIES',	'en_US',	"This Building’s adjacency bonuses."),
 			('LOC_SUK_SUA_PLACE_BLD_WORKERS',		'en_US',	"Specialists multiplying this building’s adjacency bonuses."),
@@ -21,7 +20,7 @@
 			('LOC_SUK_SUA_PLACE_BLD_WAREHOUSE',		'en_US',	"Warehouse bonuses to other Tiles."),
 			('LOC_SUK_SUA_PLACE_BLD_OVERBUILD',		'en_US',	"Yield losses from Overbuilding/developing a Rural Tile."),
 			('LOC_SUK_SUA_PLACE_BLD_UNWORKED',		'en_US',	"Opportunity cost from developing an unworked tile."),
-			-- Spanish --
+			-- Spanish: thanks to Leugi for checking my translation --
 			('LOC_SUK_SUA_YOUR_UNIT',		'es_ES',	"Tuyo"),
 			('LOC_SUK_SUA_DISTRICT',		'es_ES',	"Distrito {1_Type}"),
 			('LOC_SUK_SUA_QUARTER',			'es_ES',	"Barrio {1_Type}"),
@@ -31,7 +30,15 @@
 			('LOC_SUK_SUA_UNIMPROVED',		'es_ES',	"Sin mejoras"),
 			('LOC_SUK_SUA_GROWTH_TT',		'es_ES',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
 			('LOC_SUK_SUA_ADJ_QUARTER',		'es_ES',	"Barrio"),
-			-- Chinese (Simplified) --
+			('LOC_SUK_SUA_PLACE_BLD_KEY',			'es_ES',	"Referencia"),
+			('LOC_SUK_SUA_PLACE_BLD_ADJACENCIES',	'es_ES',	"Bonificaciones de adyacencia de este edificio."),
+			('LOC_SUK_SUA_PLACE_BLD_WORKERS',		'es_ES',	"Especialistas multiplicando las bonificaciones de adyacencia de este edificio."),
+			('LOC_SUK_SUA_PLACE_BLD_TO_OTHERS',		'es_ES',	"Bonificaciones de adyacencia a otras casillas."),
+			('LOC_SUK_SUA_PLACE_BLD_BASE_YIELD',	'es_ES',	"Rendimiento básico de este edificio."),
+			('LOC_SUK_SUA_PLACE_BLD_WAREHOUSE',		'es_ES',	"Bonificaciones de Almacén a otras casillas."),
+			('LOC_SUK_SUA_PLACE_BLD_OVERBUILD',		'es_ES',	"Pérdidas de rendimiento por la sobreconstrucción/el desarrollo de una casilla rural."),
+			('LOC_SUK_SUA_PLACE_BLD_UNWORKED',		'es_ES',	"Costo de oportunidad del desarrollo de una casilla vacía."),
+			-- Chinese (Simplified): thanks to Phantagonist for checking my translation --
 			('LOC_SUK_SUA_YOUR_UNIT',		'zh_Hans_CN',	"你的"),
 			('LOC_SUK_SUA_DISTRICT',		'zh_Hans_CN',	"{1_Type}区块"),
 			('LOC_SUK_SUA_QUARTER',			'zh_Hans_CN',	"{1_Type}城区"),
@@ -41,7 +48,17 @@
 			('LOC_SUK_SUA_UNIMPROVED',		'zh_Hans_CN',	"无改良设施"),
 			('LOC_SUK_SUA_GROWTH_TT',		'zh_Hans_CN',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
 			('LOC_SUK_SUA_ADJ_QUARTER',		'zh_Hans_CN',	"城区"),
-			-- Japanese --
+			-- Chinese (Traditional): credits to alwdark--
+			('LOC_SUK_SUA_YOUR_UNIT',		'zh_Hant_HK',	"你的單位"),
+			('LOC_SUK_SUA_DISTRICT',		'zh_Hant_HK',	"{1_Type}區塊"),
+			('LOC_SUK_SUA_QUARTER',			'zh_Hant_HK',	"{1_Type}城區"),
+			('LOC_SUK_SUA_PLOT_OWNERSHIP',	'zh_Hant_HK',	"{1} {LOC_PLOT_DIVIDER_DOT} {2} ({3})"),
+			('LOC_SUK_SUA_IMPROVED_BY',		'zh_Hant_HK',	"預期改良設施: {1}"),
+			('LOC_SUK_SUA_OBSOLETE',		'zh_Hant_HK',	"過時"),
+			('LOC_SUK_SUA_UNIMPROVED',		'zh_Hant_HK',	"未改良"),
+			('LOC_SUK_SUA_GROWTH_TT',		'zh_Hant_HK',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
+			('LOC_SUK_SUA_ADJ_QUARTER',		'zh_Hant_HK',	"城區"),
+			-- Japanese: credits to woinary--
 			('LOC_SUK_SUA_YOUR_UNIT',		'ja_JP',	"あなた"),
 			('LOC_SUK_SUA_DISTRICT',		'ja_JP',	"{1_Type} 区域"),
 			('LOC_SUK_SUA_QUARTER',			'ja_JP',	"{1_Type} 街区"),
@@ -51,7 +68,7 @@
 			('LOC_SUK_SUA_UNIMPROVED',		'ja_JP',	"未改善"),
 			('LOC_SUK_SUA_GROWTH_TT',		'ja_JP',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
 			('LOC_SUK_SUA_ADJ_QUARTER',		'ja_JP',	"街区"),
-			-- Italian --
+			-- Italian: credits to leonardify --
 			('LOC_SUK_SUA_YOUR_UNIT',		'it_IT',	"Tuoi"),
 			('LOC_SUK_SUA_DISTRICT',		'it_IT',	"Distretto {1_Type}"),
 			('LOC_SUK_SUA_QUARTER',			'it_IT',	"Quartiere {1_Type}"),
@@ -61,7 +78,7 @@
 			('LOC_SUK_SUA_UNIMPROVED',		'it_IT',	"Non migliorato"),
 			('LOC_SUK_SUA_GROWTH_TT',		'it_IT',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
 			('LOC_SUK_SUA_ADJ_QUARTER',		'it_IT',	"Quartiere"),
-			-- Polish --
+			-- Polish: credits to l Klajwert--
 			('LOC_SUK_SUA_YOUR_UNIT',		'pl_PL',	"Twoja"),
 			('LOC_SUK_SUA_DISTRICT',		'pl_PL',	"{1_Type} Dystrykt"),
 			('LOC_SUK_SUA_QUARTER',			'pl_PL',	"{1_Type} Dzielnica"),
@@ -71,7 +88,7 @@
 			('LOC_SUK_SUA_UNIMPROVED',		'pl_PL',	"Puste pole"),
 			('LOC_SUK_SUA_GROWTH_TT',		'pl_PL',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
 			('LOC_SUK_SUA_ADJ_QUARTER',		'pl_PL',	"Dzielnica"),
-			-- Russian --
+			-- Russian: credits to Webrok --
 			('LOC_SUK_SUA_YOUR_UNIT',		'ru_RU',	"ваш"),
 			('LOC_SUK_SUA_DISTRICT',		'ru_RU',	"{1_Type} Район"),
 			('LOC_SUK_SUA_QUARTER',			'ru_RU',	"{1_Type} Квартал"),
@@ -80,6 +97,32 @@
 			('LOC_SUK_SUA_OBSOLETE',		'ru_RU',	"Устарело"),
 			('LOC_SUK_SUA_UNIMPROVED',		'ru_RU',	"Не улучшено"),
 			('LOC_SUK_SUA_GROWTH_TT',		'ru_RU',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
-			('LOC_SUK_SUA_ADJ_QUARTER',		'ru_RU',	"Квартал");
+			('LOC_SUK_SUA_ADJ_QUARTER',		'ru_RU',	"Квартал"),
+			('LOC_SUK_SUA_PLACE_BLD_KEY',			'ru_RU',	"Легенда"),
+			('LOC_SUK_SUA_PLACE_BLD_ADJACENCIES',	'ru_RU',	"Бонус соседства этого здания."),
+			('LOC_SUK_SUA_PLACE_BLD_WORKERS',		'ru_RU',	"Доход от специалистов, умножающих бонус соседства этого здания."),
+			('LOC_SUK_SUA_PLACE_BLD_TO_OTHERS',		'ru_RU',	"Бонусы соседства для других клеток."),
+			('LOC_SUK_SUA_PLACE_BLD_BASE_YIELD',	'ru_RU',	"Базовый доход этого здания."),
+			('LOC_SUK_SUA_PLACE_BLD_WAREHOUSE',		'ru_RU',	"Бонусы от склада для других клеток."),
+			('LOC_SUK_SUA_PLACE_BLD_OVERBUILD',		'ru_RU',	"Потери дохода от строительства поверх устаревшего здания/деревенского района."),
+			('LOC_SUK_SUA_PLACE_BLD_UNWORKED',		'ru_RU',	"Потери возможного дохода от размещения деревенского района."),
+			-- German: credits to Fampat --
+			('LOC_SUK_SUA_YOUR_UNIT',		'de_DE',	"Ihr"),
+			('LOC_SUK_SUA_DISTRICT',		'de_DE',	"{1_Type} Stadtbezirk"),
+			('LOC_SUK_SUA_QUARTER',			'de_DE',	"{1_Type} Stadtviertel"),
+			('LOC_SUK_SUA_PLOT_OWNERSHIP',	'de_DE',	"{1} {LOC_PLOT_DIVIDER_DOT} {2} ({3})"),
+			('LOC_SUK_SUA_IMPROVED_BY',		'de_DE',	"Modernisierung: {1}"),
+			('LOC_SUK_SUA_OBSOLETE',		'de_DE',	"Obsolet"),
+			('LOC_SUK_SUA_UNIMPROVED',		'de_DE',	"Unmodernisiert"),
+			('LOC_SUK_SUA_GROWTH_TT',		'de_DE',	"{1}/{2}[icon:YIELD_Food] ({3}[icon:YIELD_Food])"),
+			('LOC_SUK_SUA_ADJ_QUARTER',		'de_DE',	"Stadtviertel"),
+			('LOC_SUK_SUA_PLACE_BLD_KEY',			'de_DE',	"Legende"),
+			('LOC_SUK_SUA_PLACE_BLD_ADJACENCIES',	'de_DE',	"Nachbarschaftsboni für dieses Gebäude."),
+			('LOC_SUK_SUA_PLACE_BLD_WORKERS',		'de_DE',	"Nachbarschaftsbonus Multiplikator durch Spezialisten."),
+			('LOC_SUK_SUA_PLACE_BLD_TO_OTHERS',		'de_DE',	"Nachbarschaftsboni für umliegende Felder."),
+			('LOC_SUK_SUA_PLACE_BLD_BASE_YIELD',	'de_DE',	"Grundertrag für dieses Gebäude."),
+			('LOC_SUK_SUA_PLACE_BLD_WAREHOUSE',		'de_DE',	"Warenhaus-Boni für modernisierte Felder."),
+			('LOC_SUK_SUA_PLACE_BLD_OVERBUILD',		'de_DE',	"Ertragverluste durch Überbauen/Aufwerten einer einfachen Modernisierung."),
+			('LOC_SUK_SUA_PLACE_BLD_UNWORKED',		'de_DE',	"Ertragsverluste durch das Aufwerten eines unmodernisierten Feldes.");
 --========================================================================================================================
 --========================================================================================================================
