@@ -14,11 +14,7 @@ export class Suk_CityBannersDecorator {
             console.error("this.city is null when growth is updated.");
             return;
         }
-        // **NEW** to current logic. 
-        // Do a check for only local player's city because technically you should not see other player's city details.
-        if (this.city.owner != GameContext.localPlayerID) {
-            return;
-        }
+
         const population = this.city.population;
 
         // Code below are purely copied from setPopulation(population) except the second last line.
